@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Online Exam</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        #quiz-container {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .question {
+            margin-bottom: 15px;
+        }
+
+        .options {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        .options li {
+            margin-bottom: 10px;
+        }
+
+        #submit-btn {
+            background-color: #4caf50;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        #result {
+            margin-top: 20px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div id="quiz-container">
+        <div class="question" id="question1">
+            <p>1. What is the capital of France?</p>
+            <ul class="options">
+                <li><input type="radio" name="q1" value="Paris"> Paris</li>
+                <li><input type="radio" name="q1" value="London"> London</li>
+                <li><input type="radio" name="q1" value="Berlin"> Berlin</li>
+            </ul>
+        </div>
+
+        <div class="question" id="question2">
+            <p>2. What is the largest planet in our solar system?</p>
+            <ul class="options">
+                <li><input type="radio" name="q2" value="Mars"> Mars</li>
+                <li><input type="radio" name="q2" value="Jupiter"> Jupiter</li>
+                <li><input type="radio" name="q2" value="Earth"> Earth</li>
+            </ul>
+        </div>
+
+        <button id="submit-btn" onclick="submitAnswers()">Submit</button>
+        <div id="result"></div>
+    </div>
+
+    <script>
+        function submitAnswers() {
+            var score = 0;
+            var q1 = document.querySelector('input[name="q1"]:checked');
+            var q2 = document.querySelector('input[name="q2"]:checked');
+
+            if (q1 && q1.value === "Paris") {
+                score++;
+            }
+
+            if (q2 && q2.value === "Jupiter") {
+                score++;
+            }
+
+            var resultContainer = document.getElementById("result");
+            resultContainer.innerHTML = "Your score: " + score + "/2";
+        }
+    </script>
+</body>
+</html>
+
